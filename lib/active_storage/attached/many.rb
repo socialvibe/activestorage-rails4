@@ -3,8 +3,6 @@
 module ActiveStorage
   # Decorated proxy object representing of multiple attachments to a model.
   class Attached::Many < Attached
-    delegate_missing_to :attachments
-
     # Returns all the associated attachment records.
     #
     # All methods called on this proxy object that aren't listed here will automatically be delegated to +attachments+.

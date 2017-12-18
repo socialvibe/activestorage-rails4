@@ -3,7 +3,7 @@
 module ActiveStorage
   # Representation of a single attachment to a model.
   class Attached::One < Attached
-    delegate_missing_to :attachment
+    delegate :to_model, :blob, to: :attachment
 
     # Returns the associated attachment record.
     #
@@ -65,7 +65,7 @@ module ActiveStorage
     private
       def replace(attachable)
         blob.tap do
-          transaction do
+          attachment.transaction do
             detach
             write_attachment build_attachment_from(attachable)
           end

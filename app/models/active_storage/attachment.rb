@@ -12,8 +12,6 @@ class ActiveStorage::Attachment < ActiveRecord::Base
   belongs_to :record, polymorphic: true, touch: true
   belongs_to :blob, class_name: "ActiveStorage::Blob"
 
-  delegate_missing_to :blob
-
   after_commit :analyze_blob_later, on: :create
 
   # Synchronously purges the blob (deletes it from the configured service) and destroys the attachment.
