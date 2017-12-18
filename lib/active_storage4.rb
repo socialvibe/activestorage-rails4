@@ -27,14 +27,14 @@ require "active_record"
 require "active_support"
 require "active_support/rails"
 require "active_storage/version"
+require 'active_storage/previewer'
+require 'active_storage/analyzer'
+require 'active_storage/service'
+require 'active_storage/attached'
+require 'active_storage/engine'
 
 module ActiveStorage
   extend ActiveSupport::Autoload
-
-  autoload :Attached
-  autoload :Service
-  autoload :Previewer
-  autoload :Analyzer
 
   mattr_accessor :logger
   mattr_accessor :verifier
