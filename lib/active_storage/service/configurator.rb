@@ -14,7 +14,9 @@ module ActiveStorage
 
     def build(service_name)
       config = config_for(service_name.to_sym)
-      resolve(config.fetch(:service)).build(**config, configurator: self)
+      service = resolve(config.fetch(:service))
+      service.url_expires_in = 5.minutes
+      service.build(**config, configurator: self)
     end
 
     private
