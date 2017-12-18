@@ -8,13 +8,14 @@ module ActiveStorage
   # Wraps the Amazon Simple Storage Service (S3) as an Active Storage service.
   # See ActiveStorage::Service for the generic API documentation that applies to all services.
   class Service::S3Service < Service
-    attr_reader :client, :bucket, :upload_options
+    attr_reader :client, :bucket, :upload_options, :upload_folder
 
     def initialize(access_key_id:, secret_access_key:, region:, bucket:, upload: {}, **options)
       @client = Aws::S3::Resource.new(access_key_id: access_key_id, secret_access_key: secret_access_key, region: region, **options)
       @bucket = @client.bucket(bucket)
 
       @upload_options = upload
+      @upload_folder = @upload_options.delete(:folder)
     end
 
     def upload(key, io, checksum: nil)
@@ -87,8 +88,9 @@ module ActiveStorage
     end
 
     private
+
       def object_for(key)
-        bucket.object(key)
+        bucket.object([upload_folder, key].select(&:present?).join('/'))
       end
 
       # Reads the object for the given key in chunks, yielding each to the block.
