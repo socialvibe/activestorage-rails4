@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "has_secure_token"
 require "active_storage/analyzer/null_analyzer"
 
 # A blob is a record that contains the metadata about a file and a key for where that file resides on the service.
