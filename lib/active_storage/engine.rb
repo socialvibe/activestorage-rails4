@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
 require "rails"
-require "active_storage"
 
 require "active_storage/previewer/pdf_previewer"
 require "active_storage/previewer/video_previewer"
-
 require "active_storage/analyzer/image_analyzer"
 require "active_storage/analyzer/video_analyzer"
 
 module ActiveStorage
   class Engine < Rails::Engine # :nodoc:
     isolate_namespace ActiveStorage
+    engine_name 'active_storage'
+
+    config.autoload_paths += %W(#{config.root}/lib)
 
     config.active_storage = ActiveSupport::OrderedOptions.new
     config.active_storage.previewers = [ ActiveStorage::Previewer::PDFPreviewer, ActiveStorage::Previewer::VideoPreviewer ]
