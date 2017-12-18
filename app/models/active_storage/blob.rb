@@ -37,7 +37,7 @@ class ActiveStorage::Blob < ActiveRecord::Base
     #
     # The signed ID is also used to create stable URLs for the blob through the BlobsController.
     def find_signed(id)
-      find ActiveStorage.verifier.verify(id, purpose: :blob_id)
+      find(ActiveStorage.verifier.verify(id)[:id])
     end
 
     # Returns a new, unsaved blob instance after the +io+ has been uploaded to the service.
@@ -72,7 +72,7 @@ class ActiveStorage::Blob < ActiveRecord::Base
   # Returns a signed ID for this blob that's suitable for reference on the client-side without fear of tampering.
   # It uses the framework-wide verifier on <tt>ActiveStorage.verifier</tt>, but with a dedicated purpose.
   def signed_id
-    ActiveStorage.verifier.generate(id, purpose: :blob_id)
+    ActiveStorage.verifier.generate(id: id, purpose: :blob_id)
   end
 
   # Returns the key pointing to the file on the service that's associated with this blob. The key is in the

@@ -66,7 +66,7 @@ module ActiveStorage
 
     def url(key, expires_in:, filename:, disposition:, content_type:)
       instrument :url, key: key do |payload|
-        verified_key_with_expiration = ActiveStorage.verifier.generate(key, expires_in: expires_in, purpose: :blob_key)
+        verified_key_with_expiration = ActiveStorage.verifier.generate(id: key, expires_in: expires_in, purpose: :blob_key)
 
         generated_url =
           if defined?(Rails.application)
@@ -87,14 +87,14 @@ module ActiveStorage
     def url_for_direct_upload(key, expires_in:, content_type:, content_length:, checksum:)
       instrument :url, key: key do |payload|
         verified_token_with_expiration = ActiveStorage.verifier.generate(
-          {
+          id: {
             key: key,
             content_type: content_type,
             content_length: content_length,
             checksum: checksum
           },
-          { expires_in: expires_in,
-          purpose: :blob_token }
+          expires_in: expires_in,
+          purpose: :blob_token
         )
 
         generated_url =
