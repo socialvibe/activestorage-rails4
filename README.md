@@ -14,7 +14,22 @@ A key difference to how Active Storage works compared to other attachment soluti
 
 ## Installation
 
-Run `rails active_storage:install` to copy over active_storage migrations.
+1. Run `rails active_storage:install` to copy over active_storage migrations.
+2. In `config/application.rb` specify storage type `config.active_storage.service = :local`
+3. Create file `config/storage.yml` with content
+```yml
+  local:
+    service: Disk
+    root: <%= Rails.root.join("storage") %>
+  s3:
+    service: S3
+    access_key_id: AWS_ACCESS_KEY
+    secret_access_key: AWS_SECRET_KEY
+    region: AWS_BUCKET_REGION
+    bucket: AWS_BUCKET_NAME
+    upload:
+      folder: OPTIONAL
+```
 
 ## Examples
 
