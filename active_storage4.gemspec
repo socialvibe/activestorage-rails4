@@ -23,6 +23,6 @@ Gem::Specification.new do |s|
     # "changelog_uri"   => "https://github.com/rails/rails/blob/v#{version}/activestorage/CHANGELOG.md"
   }
 
-  s.add_dependency "rails", "~> 4.2.0"
+  s.add_dependency "rails", ">= 4.2.0", "< 5.1.0"
   s.add_dependency "has_secure_token", "~> 1.0.0"
 end
