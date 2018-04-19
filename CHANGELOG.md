@@ -1,12 +1,12 @@
-## Rails 5.2.0.beta2 (November 28, 2017) ##
+##  4.2.1 (April 19, 2018) ##
 
-*   Fix the gem adding the migrations files to the package.
+*   Remove analyze_blob_later jobs as analyzing not required as of now.
 
-    *Yuji Yaginuma*
+    *Sahil Batla*
 
 
-## Rails 5.2.0.beta1 (November 27, 2017) ##
+## 4.2.0 (December 18, 2017) ##
 
-*   Added to Rails.
+*   Added the Gem for Rails 4.2.0.
 
-    *DHH*
+    *Anton Zaytsev*
