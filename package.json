@@ -29,5 +29,8 @@
     "prebuild": "yarn lint",
     "build": "webpack -p",
     "lint": "eslint app/javascript"
+  },
+  "dependencies": {
+    "mem": "^4.0.0"
   }
 }
