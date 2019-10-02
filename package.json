@@ -29,5 +29,10 @@
     "prebuild": "yarn lint",
     "build": "webpack -p",
     "lint": "eslint app/javascript"
+  },
+  "dependencies": {
+    "lodash": "^4.17.13",
+    "mem": "^4.0.0",
+    "tar": "^2.2.2"
   }
 }
