@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# require "aws-sdk-s3"
-require "aws-sdk"
+# use the aws-sdk-s3 gem from v3
+require "aws-sdk-s3"
+#require "aws-sdk"
 require "active_support/core_ext/numeric/bytes"
 
 module ActiveStorage

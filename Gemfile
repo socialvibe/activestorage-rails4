@@ -12,7 +12,10 @@ gem "rake"
 # gem "sqlite3"
 # gem "httparty"
 
-gem "aws-sdk", "~> 2", require: false
+#gem "aws-sdk", "~> 2", require: false
+# use the aws-sdk-s3 gem from v3 aws-sdk so this is compatible
+# with our other libraries.
+gem "aws-sdk-s3", "~> 1"
 # gem "google-cloud-storage", "~> 1.3", require: false
 # Contains fix to be able to test using StringIO
 # gem 'azure-core', git: "https://github.com/dixpac/azure-ruby-asm-core.git"
